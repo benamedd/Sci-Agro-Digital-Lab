@@ -913,9 +913,21 @@ header {
     text-align: center;
     transition: background 0.2s, transform 0.15s;
     margin-top: 6px;
+    
+    /* Correctifs essentiels pour la balise <button> */
+    border: none;
+    cursor: pointer;
+    font-family: inherit; /* Aligne la police avec le reste du site */
 }
 
-.btn-submit:hover { background: var(--teal-dk); transform: translateY(-1px); }
+.btn-submit:hover {
+    background: var(--teal-dk);
+    transform: translateY(-1px);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
 
 .form-note {
     font-size: 0.78rem;
