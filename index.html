@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -46,14 +46,14 @@
             <div class="hero-left">
                 <div class="hero-eyebrow">
                     <span class="dot dot-green"></span>
-                    <span>Expert en activité — Chercheur Senior</span>
+                    <span> </span>
                 </div>
                 <h1>
                     Sci-Agro Lab<br>
                     <em>Digitalisation & Agronomie</em>
                 </h1>
                 <p class="hero-lead">
-                    Phytopathologiste Senior · Consultant Scientifique Indépendant au service de la santé des plantes. 
+                    Phytopathologiste Senior · Consultant Scientifique au service de la santé des plantes. 
                     Virologue végétal et microbiologiste, je propose des analyses bioinformatiques et métagénomiques, l'exploration des viromes et microbiomes végétaux, ainsi que le déploiement de pipelines NGS dédiés à la phytopathologie.
                 </p>
                 <div class="hero-cta">
@@ -401,54 +401,63 @@
     </section>
 
     <!-- Contact & Form Section -->
-    <section id="contact" class="section-pad contact-section">
+    <section id="contact" class="contact-section">
         <div class="container">
             <div class="contact-grid">
-                <div class="contact-left">
-                    <span class="pill pill-white">Contact & Commande</span>
-                    <h2>Travaillons Ensemble</h2>
-                    <p>Que vous soyez chercheur, étudiant en doctorat, entreprise phytosanitaire ou ONG — je propose des prestations adaptées à votre budget et à votre échéance.</p>
-                    <p>Décrivez votre besoin via le formulaire ou directement par email, et je vous répondrai sous 24h avec un devis personnalisé.</p>
-
-                    <div class="contact-email">
-                        <svg viewBox="0 0 24 24" fill="none" width="20" height="20">
-                            <rect x="2" y="4" width="20" height="16" rx="2" stroke="var(--teal)" stroke-width="1.5"/>
-                            <path d="M2 7 L12 13 L22 7" stroke="var(--teal)" stroke-width="1.5"/>
-                        </svg>
-                        <a href="mailto:contact@sci-agro-lab.com">contact@sci-agro-lab.com</a>
+                <div class="contact-info">
+                    <span class="badge badge-teal">Contact & Devis</span>
+                    <h3>Collaborons sur votre prochain projet</h3>
+                    <p class="lead">Qu'il s'agresse d'un déploiement d'application, d'analyses statistiques complexes ou d'un projet de recherche en bioinformatique, je vous accompagne avec une rigueur scientifique absolue.</p>
+                    
+                    <div class="contact-details">
+                        <div class="detail-item">
+                            <strong>Adresse E-mail</strong>
+                            <p><a href="mailto:contact@sci-agro-lab.com">contact@sci-agro-lab.com</a></p>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Disponibilité</strong>
+                            <p>Consultations du lundi au vendredi · Travail à distance à l'international.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="contact-right">
-                    <form class="contact-card" action="mailto:contact@sci-agro-lab.com" method="post" enctype="text/plain">
-                        <h4>Demande de Devis</h4>
+                <div class="contact-card">
+                    <h4>Demande de Devis</h4>
+                    
+                    <form action="https://formspree.io/f/mrevgbpj" method="POST">
+                        
                         <div class="form-group">
-                            <label for="name">Votre nom / institution</label>
-                            <input type="text" id="name" name="Nom-Institution" placeholder="Dr. Ahmed Benali — Université d'Alger" required>
+                            <label>Votre nom / institution</label>
+                            <input type="text" name="nom_institution" placeholder=":   " required>
                         </div>
+                        
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="Email" placeholder="vous@exemple.com" required>
+                            <label>Email</label>
+                            <input type="email" name="email" placeholder="vous@exemple.com" required>
                         </div>
+                        
                         <div class="form-group">
-                            <label for="service">Service souhaité</label>
-                            <select id="service" name="Service">
-                                <option value="Non spécifié">— Choisir —</option>
-                                <option value="LeafDiag">LeafDiag (APK Android)</option>
-                                <option value="EpiModel">EpiModel (APK Android)</option>
-                                <option value="Sprayer Calibrator">Sprayer Calibrator (APK Android)</option>
-                                <option value="Analyse Statistique">Analyse statistique</option>
-                                <option value="Pipeline Bioinformatique">Pipeline bioinformatique</option>
-                                <option value="Formation">Formation / Cours</option>
-                                <option value="Relecture Manuscrit">Relecture manuscrit</option>
-                                <option value="Sur-mesure">Autre / Sur-mesure</option>
+                            <label>Service souhaité</label>
+                            <select name="service" required>
+                                <option value="">— Choisir —</option>
+                                <option value="LeafDiag (APK)">LeafDiag (APK Android)</option>
+                                <option value="EpiModel (APK)">EpiModel (APK Android)</option>
+                                <option value="Sprayer Calibrator (APK)">Sprayer Calibrator (APK Android)</option>
+                                <option value="Analyse statistique">Analyse statistique (R)</option>
+                                <option value="Pipeline bioinformatique">Pipeline bioinformatique</option>
+                                <option value="Formation / Cours">Formation / Cours</option>
+                                <option value="Relecture manuscrit">Relecture manuscrit</option>
+                                <option value="Autre / Sur-mesure">Autre / Sur-mesure</option>
                             </select>
                         </div>
+                        
                         <div class="form-group">
-                            <label for="message">Description du projet</label>
-                            <textarea id="message" name="Description-Projet" rows="4" placeholder="Décrivez brièvement votre besoin, vos données disponibles..." required></textarea>
+                            <label>Description du projet</label>
+                            <textarea name="message" rows="4" placeholder="Décrivez brièvement votre besoin, vos données disponibles, et l'échéance si applicable..." required></textarea>
                         </div>
-                        <button type="submit" class="btn-submit" style="width: 100%; border: none; cursor: pointer;">Envoyer la demande →</button>
+                        
+                        <button type="submit" class="btn-submit">Envoyer la demande →</button>
+                        
                         <p class="form-note">Réponse garantie sous 24–48h ouvrables.</p>
                     </form>
                 </div>
