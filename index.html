@@ -353,7 +353,7 @@
                 </div>
                 <div class="formation-card">
                     <span class="f-num">III</span>
-                    <h4>Virologie Végétale</h4>
+                    <h4>Bases de la virologie  & Virologie Végétale</h4>
                     <p>Structure, réplication et diversité des phytovirus. Méthodes de détection sérologique et moléculaire (ELISA, RT-PCR, séquençage).</p>
                 </div>
                 <div class="formation-card">
@@ -400,14 +400,14 @@
         </div>
     </section>
 
-    <!-- Contact & Form Section -->
+    <!-- Section Contact >
     <section id="contact" class="contact-section">
         <div class="container">
             <div class="contact-grid">
                 <div class="contact-info">
-                    <span class="badge badge-teal">Contact & Devis</span>
+                    <span class="badge badge-teal">Contact </span>
                     <h3>Collaborons sur votre prochain projet</h3>
-                    <p class="lead">Qu'il s'agresse d'un déploiement d'application, d'analyses statistiques complexes ou d'un projet de recherche en bioinformatique, je vous accompagne avec une rigueur scientifique absolue.</p>
+                    <p class="lead">Que vous soyez chercheur, étudiant en doctorat, entreprise phytosanitaire , je propose des prestations adaptées. Décrivez votre besoin par email et je vous réponds sous 24h .</p>
                     
                     <div class="contact-details">
                         <div class="detail-item">
@@ -421,14 +421,16 @@
                     </div>
                 </div>
 
-                <div class="contact-card">
-                    <h4>Demande de Devis</h4>
+                <!-- La carte qui contient le formulaire ou le message de succès -->
+                <div class="contact-card" id="contact-card-container">
                     
-                    <form action="https://formspree.io/f/mrevgbpj" method="POST">
+                    <!-- FORMULAIRE -->
+                    <form id="my-form" action="https://formspree.io/f/mrevgbpj" method="POST">
+                        <h4>Demande de Devis</h4>
                         
                         <div class="form-group">
                             <label>Votre nom / institution</label>
-                            <input type="text" name="nom_institution" placeholder=":   " required>
+                            <input type="text" name="nom_institution" placeholder=" " required>
                         </div>
                         
                         <div class="form-group">
@@ -456,15 +458,83 @@
                             <textarea name="message" rows="4" placeholder="Décrivez brièvement votre besoin, vos données disponibles, et l'échéance si applicable..." required></textarea>
                         </div>
                         
-                        <button type="submit" class="btn-submit">Envoyer la demande →</button>
+                        <button type="submit" id="submit-btn" class="btn-submit">Envoyer la demande →</button>
                         
                         <p class="form-note">Réponse garantie sous 24–48h ouvrables.</p>
                     </form>
+
+                    <!-- MESSAGE DE SUCCÈS (Masqué par défaut au départ) -->
+                    <div id="success-message" style="display: none; text-align: center; padding: 40px 20px;">
+                        <div style="font-size: 3.5rem; margin-bottom: 20px;">✉️</div>
+                        <h4 style="margin-bottom: 15px; color: var(--teal);">Merci pour votre message !</h4>
+                        <p style="color: var(--text-2); line-height: 1.6; margin-bottom: 25px;">
+                            Votre demande de devis a été transmise avec succès au laboratoire.<br>
+                            Un accusé de réception électronique vous parviendra, et je reviendrai vers vous avec une proposition détaillée sous 24 à 48 heures ouvrables.
+                        </p>
+                        <span class="badge badge-teal" style="display: inline-block;">Sci-Agro Digital Lab</span>
+                    </div>
+
+                    <!-- MESSAGE D'ERREUR (Masqué par défaut, au cas où un problème réseau survient) -->
+                    <div id="error-message" style="display: none; text-align: center; padding: 20px; color: #dc3545;">
+                        ⚠️ Une erreur est survenue lors de l'envoi. Veuillez vérifier votre connexion ou m'écrire directement par e-mail.
+                    </div>
+
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- LE SCRIPT JAVASCRIPT (À laisser juste avant la fermeture de la section ou en bas de page) -->
+    <script>
+        const form = document.getElementById("my-form");
+        const formContainer = document.getElementById("my-form");
+        const successMessage = document.getElementById("success-message");
+        const errorMessage = document.getElementById("error-message");
+        const submitBtn = document.getElementById("submit-btn");
+
+        async function handleSubmit(event) {
+            event.preventDefault(); // Empêche la redirection vers le site externe Formspree
+            
+            // Changement d'état du bouton pendant l'envoi
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Envoi en cours...";
+
+            const data = new FormData(event.target);
+            
+            // Envoi asynchrone des données
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // Si l'envoi réussit : on cache le formulaire et on montre le message en français
+                    formContainer.style.display = "none";
+                    successMessage.style.display = "block";
+                    errorMessage.style.display = "none";
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            errorMessage.innerText = data["errors"].map(error => error["message"]).join(", ");
+                        } else {
+                            errorMessage.innerText = "Erreur lors de la transmission. Merci de passer par e-mail.";
+                        }
+                        errorMessage.style.display = "block";
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = "Envoyer la demande →";
+                    });
+                }
+            }).catch(error => {
+                errorMessage.style.display = "block";
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Envoyer la demande →";
+            });
+        }
+        
+        form.addEventListener("submit", handleSubmit);
+    </script>
     <!-- Footer -->
     <footer>
         <div class="container footer-inner">
