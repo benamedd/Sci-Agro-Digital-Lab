@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://benamedd.github.io/Sci-Agro-Digital-Lab/sitemap.xml
